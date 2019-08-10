@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2019_08_10_141714) do
 
   create_table "donations", force: :cascade do |t|
     t.string "charity"
-    t.decimal "amount"
+    t.decimal "amount", precision: 8, scale: 2
     t.datetime "created_on"
     t.integer "user_id"
     t.integer "charity_id"
