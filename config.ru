@@ -5,5 +5,6 @@ if ActiveRecord::Base.connection.migration_context.needs_migration?
 end
 
 use UserController
+use DonationController
 use Rack::MethodOverride
 run ApplicationController
