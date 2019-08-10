@@ -1,9 +1,24 @@
 <h3> Welcome, <%= @user.username %> </h3> 
 
 <h4> Here is a list of all your donations: </h4> 
-    <% @user.donations.each do |donation| %>
-            <ol> 
-            <li> <%= donation.amount %> </li> 
-            </ol>
-        <% end %> 
 
+<table> 
+<tr>
+    <th>Charity</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <th>Edit Donation</th>
+    <th>Delete Donation</th> 
+</tr>
+
+    <% @user.donations.each do |donation| %>
+        <tr>
+            <td><%= Charity.find_by_id(donation.charity_id).name%></td>
+            <td><%= donation.amount %></td>
+            <td><%= donation.created_on.strftime('%m/%d/%y') %></td>
+            <td><a href="/donations/#{donation.id}/edit">Edit</a></td>
+            <td><a href="/donations/#{donation.id}/delete">Delete</a></td>
+        </tr>
+    <% end %> 
+
+</table> 
