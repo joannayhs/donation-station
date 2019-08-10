@@ -13,11 +13,11 @@
 
     <% @user.donations.each do |donation| %>
         <tr>
-            <td><%= Charity.find_by_id(donation.charity_id).name%></td>
+            <td><%= donation.charity %></td>
             <td><%= donation.amount %></td>
             <td><%= donation.created_on.strftime('%m/%d/%y') %></td>
-            <td><a href="/donations/#{donation.id}/edit">Edit</a></td>
-            <td><a href="/donations/#{donation.id}/delete">Delete</a></td>
+            <td><a href="/donations/<%= donation.id %>/edit">Edit</a></td>
+            <td><a href="/donations/<%= donation.id %>/delete">Delete</a></td>
         </tr>
     <% end %> 
 

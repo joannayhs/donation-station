@@ -1,2 +1,8 @@
-<h1>Edit <%=@donation.amount%></h1>
+<h1>Edit Donation to <%=@donation.charity%></h1>
 
+<form method="post" action="/donations/<%= @donation.id %>">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <input type="number" name="amount" placeholder="<%= @donation.amount %>">
+    <input type="text" name="charity" placeholder="<%= @donation.charity %>">
+    <input type="submit" value="Update Donation">
+</form>
