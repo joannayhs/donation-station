@@ -5,4 +5,5 @@ class ApplicationController < Sinatra::Base
         enable :sessions
         set :session_secret, "donation_station"
     end 
+    
 end 
