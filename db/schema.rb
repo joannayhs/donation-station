@@ -19,7 +19,9 @@ ActiveRecord::Schema.define(version: 2019_08_10_142018) do
 
   create_table "donations", force: :cascade do |t|
     t.float "amount"
-    t.datetime "date"
+    t.datetime "created_on"
+    t.integer "user_id"
+    t.integer "charity_id"
   end
 
   create_table "users", force: :cascade do |t|

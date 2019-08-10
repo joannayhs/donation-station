@@ -1,19 +1,10 @@
 class UserController < ApplicationController
     
-    get '/:username' do 
-        if logged_in?
-            @user = current_user
-            erb :'/user/show'
-        else 
-            redirect to '/login'
-        end 
-    end 
-
     get '/login' do 
      if !logged_in?
         erb :'/user/login'
      else 
-        redirect to "/#{current_user.username}"
+        redirect to "/donations"
      end 
     end 
 
@@ -21,7 +12,7 @@ class UserController < ApplicationController
        @user = User.find_by(username: params[:username])
        if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id 
-        redirect to "/#{current_user.username}"
+        redirect to "/donations"
        else 
         redirect to '/signup'
        end 
@@ -29,7 +20,7 @@ class UserController < ApplicationController
 
     get '/signup' do 
      if logged_in?
-        redirect to "/#{current_user.username}"
+        redirect to "/donations"
      else 
         erb :'/user/signup'
      end 
@@ -42,7 +33,7 @@ class UserController < ApplicationController
             if params[:username] != User.find_by(username: params[:username])
                 @user = User.create(params) 
                 session[:user_id] = @user.id 
-                redirect to "/#{current_user.username}"
+                redirect to "/donations"
             else 
                 redirect to '/signup'
             end 
