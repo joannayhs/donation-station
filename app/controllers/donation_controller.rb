@@ -36,4 +36,13 @@ class DonationController < ApplicationController
         end 
     end 
 
+    get '/donations/:id/edit' do 
+        @donation = Donation.find_by_id(params[:id])
+        if logged_in? 
+            erb :'/donation/edit'
+        else 
+            redirect to '/login'
+        end 
+    end 
+
 end 
