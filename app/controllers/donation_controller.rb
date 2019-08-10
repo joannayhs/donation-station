@@ -44,7 +44,6 @@ class DonationController < ApplicationController
     end 
 
     patch '/donations/:id' do 
-        @donation = Donation.find_by_id(params[:id])
         if logged_in? 
             @donation = Donation.find_by_id(params[:id])
             if params[:amount] != nil && params[:charity] != "" 
@@ -54,6 +53,25 @@ class DonationController < ApplicationController
             else 
                 redirect to "/donations/#{@donation.id}/edit"
             end 
+        else 
+            redirect to '/login'
+        end 
+    end 
+
+    get '/donations/:id/delete' do 
+        if logged_in?
+            @donation = Donation.find_by_id(params[:id])
+            erb :'/donation/delete'
+        else 
+            redirect to '/login'
+        end 
+    end 
+
+    delete '/donations/:id/delete' do 
+        if logged_in?
+            @donation = Donation.find_by_id(params[:id])
+            @donation.destroy
+            redirect to '/donations'
         else 
             redirect to '/login'
         end 

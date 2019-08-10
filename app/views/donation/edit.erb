@@ -2,7 +2,7 @@
 
 <form method="post" action="/donations/<%= @donation.id %>">
     <input id="hidden" type="hidden" name="_method" value="patch">
-    <input type="number" name="amount" placeholder="<%= @donation.amount %>">
-    <input type="text" name="charity" placeholder="<%= @donation.charity %>">
+    <input type="currency" name="amount" value="<%= @donation.amount %>">
+    <input type="text" name="charity" value="<%= @donation.charity %>">
     <input type="submit" value="Update Donation">
 </form>

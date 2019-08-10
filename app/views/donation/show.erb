@@ -17,11 +17,13 @@
             <td><%= donation.amount %></td>
             <td><%= donation.created_on.strftime('%m/%d/%y') %></td>
             <td><a href="/donations/<%= donation.id %>/edit">Edit</a></td>
-            <td><a href="/donations/<%= donation.id %>/delete">Delete</a></td>
+            <td><a href="/donations/<%= donation.id%>/delete">Delete</a></td>
         </tr>
     <% end %> 
 
 </table> 
+
+<a href='/donations/new'>Add a new donation</a>
 
 
 <form method="post" action="/logout">
