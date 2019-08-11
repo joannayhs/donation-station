@@ -1,5 +1,14 @@
 class UserController < ApplicationController
     
+      get '/profile' do 
+        @user = current_user
+        if logged_in?
+            erb :'/user/profile'
+        else 
+            redirect to '/login'
+        end 
+    end 
+    
     get '/login' do 
      if !logged_in?
         erb :'/user/login'

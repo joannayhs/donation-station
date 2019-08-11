@@ -1,14 +1,5 @@
 class DonationController < ApplicationController 
 
-  get '/donations' do 
-        @user = current_user
-        if logged_in?
-            erb :'/donation/show'
-        else 
-            redirect to '/login'
-        end 
-    end 
-
     get '/donations/new' do 
         if logged_in? 
             erb :'/donation/new'
@@ -25,7 +16,7 @@ class DonationController < ApplicationController
                 @donation.user_id = current_user.id 
                 @donation.save 
                 current_user.save
-                redirect to '/donations'
+                redirect to '/profile'
             else 
                 redirect to '/donations/new'
             end 
@@ -49,7 +40,7 @@ class DonationController < ApplicationController
             if params[:amount] != nil && params[:charity] != "" 
                 @donation.update(amount: params[:amount], charity: params[:charity])
                 @donation.save 
-                redirect to '/donations'
+                redirect to '/profile'
             else 
                 redirect to "/donations/#{@donation.id}/edit"
             end 
@@ -71,7 +62,7 @@ class DonationController < ApplicationController
         if logged_in?
             @donation = Donation.find_by_id(params[:id])
             @donation.destroy
-            redirect to '/donations'
+            redirect to '/profile'
         else 
             redirect to '/login'
         end 
