@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_10_141714) do
+ActiveRecord::Schema.define(version: 2019_08_11_203705) do
+
+  create_table "charities", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+  end
 
   create_table "donations", force: :cascade do |t|
     t.string "charity"
