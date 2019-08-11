@@ -1,6 +1,7 @@
 class DonationController < ApplicationController 
 
   get '/donations' do 
+        @user = current_user
         if logged_in?
             erb :'/donation/show'
         else 
