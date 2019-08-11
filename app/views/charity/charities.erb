@@ -1,0 +1,9 @@
+<h3> Here is a list of all the charities users have added: </h3> 
+
+<ul>
+<%@charities.each do |charity|%>
+<li><%=charity.name%><br><%=charity.description%><br>Added by <%=@user.username%></li>
+<%end%>
+</ul>
+
+<a href="/charities/new">Click here to add a new charity</a>

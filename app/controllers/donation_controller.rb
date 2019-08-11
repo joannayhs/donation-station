@@ -21,10 +21,10 @@ class DonationController < ApplicationController
         if logged_in? 
             if params[:amount] != nil && params[:charity] != ""
                 @donation = Donation.create(params)
-                @user = current_user 
-                @user.donations << @donation
-                @user.save 
-                @donation.save
+                current_user.donations << @donation
+                @donation.user_id = current_user.id 
+                @donation.save 
+                current_user.save
                 redirect to '/donations'
             else 
                 redirect to '/donations/new'
