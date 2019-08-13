@@ -16,12 +16,14 @@ ActiveRecord::Schema.define(version: 2019_08_11_203705) do
     t.string "name"
     t.string "description"
     t.integer "user_id"
+    t.datetime "created_on"
+    t.datetime "updated_on"
   end
 
   create_table "donations", force: :cascade do |t|
-    t.string "charity"
     t.decimal "amount", precision: 8, scale: 2
     t.datetime "created_on"
+    t.datetime "updated_on"
     t.integer "user_id"
     t.integer "charity_id"
   end

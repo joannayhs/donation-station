@@ -2,6 +2,7 @@ class UserController < ApplicationController
     
       get '/profile' do 
         @user = current_user
+        @charities = @user.charities
         if logged_in?
             erb :'/user/profile'
         else 
@@ -13,7 +14,7 @@ class UserController < ApplicationController
      if !logged_in?
         erb :'/user/login'
      else 
-        redirect to "/donations"
+        redirect to "/profile"
      end 
     end 
 
@@ -21,7 +22,7 @@ class UserController < ApplicationController
        @user = User.find_by(username: params[:username])
        if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id 
-        redirect to "/donations"
+        redirect to "/profile"
        else 
         redirect to '/signup'
        end 
@@ -29,7 +30,7 @@ class UserController < ApplicationController
 
     get '/signup' do 
      if logged_in?
-        redirect to "/donations"
+        redirect to "/profile"
      else 
         erb :'/user/signup'
      end 
@@ -42,7 +43,7 @@ class UserController < ApplicationController
             if params[:username] != User.find_by(username: params[:username])
                 @user = User.create(params) 
                 session[:user_id] = @user.id 
-                redirect to "/donations"
+                redirect to "/profile"
             else 
                 redirect to '/signup'
             end 

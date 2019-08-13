@@ -3,6 +3,7 @@
 
 <table> 
 <tr>
+    <th>Charity Name</th>
     <th>Amount</th>
     <th>Date</th>
     <th>Edit Donation</th>
@@ -11,6 +12,7 @@
 
     <% @user.donations.each do |donation| %>
         <tr>
+            <td> <%= Charity.find_by_id(donation.charity_id)%>
             <td><%= donation.amount %></td>
             <td><%= donation.created_on.strftime('%m/%d/%y') %></td>
             <td><a href="/donations/<%= donation.id %>/edit">Edit</a></td>
@@ -22,6 +24,20 @@
 
 <a href='/donations/new'>Add a new donation</a>
 
+<table>
+<th> Charity Name </th> 
+<th> Charity Description </th>
+<th> Edit Charity </th> 
+<th> Delete Charity </th>
+<tr> 
+    <% @charities.each do |charity| %>
+    <td> <%= charity.name %></td>
+    <td> <%= charity.description %> 
+    <td> <a href= "/charities/<%= charity.id %>/edit">Edit</a> </td> 
+    <td> <a href="/charities/<%= charity.id %>/delete">Delete</a></td>
+    <%end%>
+</tr> 
+</table> 
 
 <form method="post" action="/logout">
 <input type="submit" value="Log Out">
