@@ -1,7 +1,11 @@
 <h1>New Donation</h1> 
 
 <form method="post" action="/donations">
-<input type="number" min="1" step="0.01" name="amount" placeholder="Enter Amount">
-<input type="text" name="charity" placeholder="Enter Charity Name">
+<%if @charities.empty?%>
+<a href="/charities/new">Add a charity</a><br>
+<%else%>
+<input type="radio" name="charities[name]" placeholder="Enter Charity Name"><%= @charities.each{|charity| charity.name}%></input><br>
+<%end%>
+<input type="number" min="1" step="0.01" name="donations[amount]" placeholder="Enter Amount">
 <input type="submit" value="Donate">
 </form>

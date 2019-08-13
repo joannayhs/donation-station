@@ -2,7 +2,10 @@
 
 <ul>
 <%@charities.each do |charity|%>
-<li><%=charity.name%><br><%=charity.description%><br>Added by <%=@user.username%></li>
+<li><%=charity.name%><br>
+<%=charity.description%><br>
+Added by <%=@user.username%><br>
+<a href="/donations/new">Donate to this charity</a></li>
 <%end%>
 </ul>
 

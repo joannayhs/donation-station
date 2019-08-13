@@ -2,6 +2,7 @@ class DonationController < ApplicationController
 
     get '/donations/new' do 
         if logged_in? 
+            @charities = Charity.all
             erb :'/donation/new'
         else 
             redirect to '/login'
@@ -10,10 +11,11 @@ class DonationController < ApplicationController
 
     post '/donations' do 
         if logged_in? 
-            if params[:amount] != nil && params[:charity] != ""
-                @donation = Donation.create(params)
+            if params[:donation][:amount] != nil && params[:charity]!= nil 
+                @donation = Donation.create(params[:donation])
                 current_user.donations << @donation
                 @donation.user_id = current_user.id 
+                @donation.charity_id = Charity.find_by(name: params[:charity][:name])
                 @donation.save 
                 current_user.save
                 redirect to '/profile'
