@@ -1,0 +1,8 @@
+<h1>Are you sure you want to delete <%= @charity.name %>?</h1> 
+
+<form method="post" action="/charities/<%= @charity.id %>/delete">
+<input id="hidden" type="hidden" name="_method" value="delete">
+<input type="submit" value="Yes, Delete">
+</form>
+
+<a href='/profile'>No, go back!</a>

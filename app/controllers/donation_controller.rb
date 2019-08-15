@@ -29,7 +29,8 @@ class DonationController < ApplicationController
 
     get '/donations/:id/edit' do 
         @donation = Donation.find_by_id(params[:id])
-        if logged_in? 
+        @charities = Charity.all
+        if logged_in? && @donation.user_id = current_user.id
             erb :'/donation/edit'
         else 
             redirect to '/login'
@@ -39,8 +40,8 @@ class DonationController < ApplicationController
     patch '/donations/:id' do 
         if logged_in? 
             @donation = Donation.find_by_id(params[:id])
-            if params[:amount] != nil && params[:charity] != "" 
-                @donation.update(amount: params[:amount], charity: params[:charity])
+            if params[:amount] != nil && params[:charity]
+                @donation.update(amount: params[:amount], charity_id: Charity.find_by(name: params[:charity]).id)
                 @donation.save 
                 redirect to '/profile'
             else 
@@ -52,7 +53,7 @@ class DonationController < ApplicationController
     end 
 
     get '/donations/:id/delete' do 
-        if logged_in?
+        if logged_in? && @donation.user_id == current_user.id
             @donation = Donation.find_by_id(params[:id])
             @charity = Charity.find_by_id(@donation.charity_id)
             erb :'/donation/delete'
