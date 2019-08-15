@@ -1,5 +1,8 @@
-<h3>Welcome, <%= @user.username %>
+<h1>Welcome, <%= @user.username %></h1>
 <h4> Here is a list of all your donations: </h4> 
+
+<br>
+<br>
 
 <table> 
 <tr>
@@ -26,8 +29,14 @@
     <% end %> 
 
 </table> 
+<br>
+<br>
 
 <a href='/donations/new'><button>Add a new donation</button></a>
+<br>
+<br>
+<br>
+<br>
 
 <table>
 <th> Charity Name </th> 
@@ -43,7 +52,9 @@
 </tr> 
 <%end%>
 </table> 
-
+<br>
+<br>
 <a href="/charities/new"><button>Add a new charity</button></a>
-
-<form method="post" action="/logout"><input type="submit" value="Log Out"></form>
+<br>
+<br>
+<br>
