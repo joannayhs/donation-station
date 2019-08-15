@@ -18,33 +18,32 @@
             <p> This charity was deleted by the user </p>
             <%end%>
             <td><%= donation.amount %></td>
-            
-            <td><%= donation.created_on.strftime('%m/%d/%y') %></td>
-            <td><a href="/donations/<%= donation.id %>/edit">Edit</a></td>
-            <td><a href="/donations/<%= donation.id%>/delete">Delete</a></td>
+
+            <td><%= donation.updated_on.strftime('%m/%d/%y') %></td>
+            <td><a href="/donations/<%= donation.id %>/edit"><button>Edit</button></a></td>
+            <td><a href="/donations/<%= donation.id%>/delete"><button>Delete</button></a></td>
         </tr>
     <% end %> 
 
 </table> 
 
-<a href='/donations/new'>Add a new donation</a>
+<a href='/donations/new'><button>Add a new donation</button></a>
 
 <table>
 <th> Charity Name </th> 
 <th> Charity Description </th>
 <th> Edit Charity </th> 
 <th> Delete Charity </th>
+<% @charities.each do |charity| %>
 <tr> 
-    <% @charities.each do |charity| %>
     <td> <%= charity.name %></td>
     <td> <%= charity.description %> 
-    <td> <a href= "/charities/<%= charity.id %>/edit">Edit</a> </td> 
-    <td> <a href="/charities/<%= charity.id %>/delete">Delete</a></td>
-    <%end%>
+    <td> <a href= "/charities/<%= charity.id %>/edit"><button>Edit</button></a> </td> 
+    <td> <a href="/charities/<%= charity.id %>/delete"><button>Delete</button></a></td>
 </tr> 
+<%end%>
 </table> 
-<a href="/charities/new">Add a new charity</a>
 
-<form method="post" action="/logout">
-<input type="submit" value="Log Out">
-</form>
+<a href="/charities/new"><button>Add a new charity</button></a>
+
+<form method="post" action="/logout"><input type="submit" value="Log Out"></form>

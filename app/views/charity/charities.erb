@@ -5,8 +5,8 @@
 <li><%=charity.name%><br>
 <%=charity.description%><br>
 Added by <%=User.find_by_id(charity.user_id).username %><br>
-<a href="/donations/new">Donate to this charity</a></li>
+<a href="/donations/new"><button>Donate to this charity</button></a></li>
 <%end%>
 </ul>
 
-<a href="/charities/new">Click here to add a new charity</a>
+Click <a href="/charities/new"><button>here</button></a> to add a new charity.

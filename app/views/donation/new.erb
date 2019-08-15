@@ -3,7 +3,7 @@
 <form method="post" action="/donations">
 <label>Select a charity</label><br>
 <%if @charities.empty?%>
-<a href="/charities/new">Or add a charity</a><br>
+<a href="/charities/new"><button>Or add a charity</button></a><br>
 <%else%>
 <%@charities.each do |charity|%>
 <input type="radio" name="charities[name]" value="<%= charity.name%>"><%= charity.name%></input><br>

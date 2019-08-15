@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Donation Station</title>
-    <link rel="stylesheet" href="layout.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/layout.css">
   </head>
 
   <body>
@@ -11,9 +11,11 @@
       <h1>Donation Station</h1>
       <h2>Keep track of all of your donations and charities in one place!</h2>
         <div class="menu">
-          <a href="/profile">View your profile</a><br>
-          <a href="/charities">View all charities</a><br>
-          <a href="/logout">Logout</a><br>
+          <a href="/charities"><button type="button">View all charities</button></a><br>
+          <%if logged_in?%>
+          <a href="/profile"><button type="button">View your profile</button></a><br>
+          <form method="post" action="/logout"><input type="submit" value="Logout"></form><br>
+          <%end%>
         </div>
       <%= yield %>
     </div>
