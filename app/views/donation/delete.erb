@@ -1,4 +1,4 @@
-<h1>Are you sure you want to delete your donation to <%= @donation.charity %>?</h1> 
+<h1>Are you sure you want to delete your donation to <%= @charity.name %>?</h1> 
 
 <form method="post" action="/donations/<%= @donation.id %>/delete">
 <input id="hidden" type="hidden" name="_method" value="delete">

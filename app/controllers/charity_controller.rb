@@ -2,9 +2,6 @@ class CharityController < ApplicationController
 
     get '/charities' do 
         @charities = Charity.all
-        @charities.each do |charity|
-            @user = User.find_by_id(charity.user_id)
-        end 
         erb :'/charity/charities'
     end 
 
@@ -32,5 +29,5 @@ class CharityController < ApplicationController
         end 
     end 
 
-    
+
 end 

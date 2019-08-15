@@ -4,7 +4,7 @@
 <%@charities.each do |charity|%>
 <li><%=charity.name%><br>
 <%=charity.description%><br>
-Added by <%=@user.username%><br>
+Added by <%=User.find_by_id(charity.user_id).username %><br>
 <a href="/donations/new">Donate to this charity</a></li>
 <%end%>
 </ul>
