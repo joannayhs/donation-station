@@ -41,7 +41,7 @@ class UserController < ApplicationController
             redirect to '/signup'
         else 
             if params[:username] != User.find_by(username: params[:username])
-                @user = User.create(params) 
+                @user = User.create(username: params[:username].downcase, password: params[:password]) 
                 session[:user_id] = @user.id 
                 redirect to "/profile"
             else 
