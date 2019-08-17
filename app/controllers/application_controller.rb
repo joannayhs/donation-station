@@ -4,6 +4,7 @@ class ApplicationController < Sinatra::Base
         set :views, Proc.new { File.join(root, "../views/") }
         enable :sessions
         set :session_secret, "donation_station"
+        register Sinatra::Flash
     end 
 
     get '/' do 
