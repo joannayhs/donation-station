@@ -1,12 +1,12 @@
-<h3> Here is a list of all the charities users have added: </h3> 
-
+<h1>Charities: </h1>
 <ul class="charities">
 <%@charities.each do |charity|%>
-<li><%=charity.name%><br>
+<li><h3><u><%=charity.name%></u></h3><br>
 <%=charity.description%><br>
 Added by <%=User.find_by_id(charity.user_id).username %><br>
-<a href="/donations/new">Donate to this charity</a></li>
+<br><a href="/donations/new">Donate</a></li>
 <%end%>
 </ul>
-
-Click <a href="/charities/new">here</a> to add a new charity.
+<br>
+<br>
+<a href="/charities/new">Add a charity</a>

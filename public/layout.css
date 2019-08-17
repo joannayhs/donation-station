@@ -1,5 +1,5 @@
 
-h1 {
+h1, h3 {
     color: white;
 }
 
@@ -22,11 +22,12 @@ th {
 div.header {
     background-color: #00ace6;
     border-radius: 15px;
-    padding: 25px;
+    padding: 8px;
 }
 
 html {
     background-color: #92B2BC;
+    padding: 10px;
 }
 
 body {
@@ -34,15 +35,54 @@ body {
 }
 
 ul {
-    list-style: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #00ace6;
 }
 
-li{
-    display: inline;
+li {
+  float: right;
 }
 
-a {
-    display: block;
-    padding: 5px;
+.menu li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.menu li a:hover {
+  background-color: #111;
+}
+
+.menu li {
+    border: none;
+}
+
+ul.charities {
+    list-style-type: none;
+    margin: 0; 
+    padding: 0;
+    overflow: hidden;
+    background-color: #92B2BC;
+}
+
+ul.charities li{
+    float: left;
+    border: 1px solid black;
+    padding: 3px;
+    margin: 5px;
+}
+
+a:link, a:visited {
+    display: inline-block;
+    text-decoration: none;
+    color: #3F38CD;
+}
+
+a:hover, a:active {
     background-color: white;
 }
