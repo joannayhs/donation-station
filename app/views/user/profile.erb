@@ -22,7 +22,6 @@
             <p> This charity was deleted by the user </p>
             <%end%>
             <td><%= sprintf("%.2f", donation.amount)%></td>
-
             <td><%= donation.updated_on.strftime('%m/%d/%y') %></td>
             <td><a href="/donations/<%= donation.id %>/edit"><button>Edit</button></a></td>
             <td><a href="/donations/<%= donation.id%>/delete"><button>Delete</button></a></td>
