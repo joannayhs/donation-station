@@ -19,7 +19,7 @@
             <td><% if Charity.find_by_id(donation.charity_id) %>
             <%= Charity.find_by_id(donation.charity_id).name %>
             <%else%>
-            <p> This charity was deleted by the user </p>
+            [This charity was deleted by the user]
             <%end%>
             <td><%= sprintf("%.2f", donation.amount)%></td>
             <td><%= donation.updated_on.strftime('%m/%d/%y') %></td>

@@ -14,7 +14,7 @@
           <a href="/charities"><button type="button">View all charities</button></a><br>
           <%if logged_in?%>
           <a href="/profile"><button type="button">View your profile</button></a><br>
-          <form method="post" action="/logout"><input type="submit" value="Logout"></form><br>
+          <a href="/logout"><button>Logout</button></a><br>
           <%end%>
         </div>
       <%= yield %>
