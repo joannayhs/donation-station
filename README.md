@@ -4,7 +4,7 @@ This Sinatra app is meant to help donors keep track of their donations and chari
 
 ## Getting Started
 
-Fork and clone the repo, into the directory of your choosing, use bundle install in the terminal to insure all gems are installed and then run shotgun to view the app in your localhost. 
+Fork and clone this repository into the directory of your choosing, use bundle install in the terminal to ensure all gems are installed and then run shotgun to view the app in your localhost. 
 
 ## Contributing
 
