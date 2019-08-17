@@ -32,3 +32,17 @@ html {
 body {
     font-family: helvetica;
 }
+
+ul {
+    list-style: none;
+}
+
+li{
+    display: inline;
+}
+
+a {
+    display: block;
+    padding: 5px;
+    background-color: white;
+}

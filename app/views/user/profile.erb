@@ -23,8 +23,8 @@
             <%end%>
             <td><%= sprintf("%.2f", donation.amount)%></td>
             <td><%= donation.updated_on.strftime('%m/%d/%y') %></td>
-            <td><a href="/donations/<%= donation.id %>/edit"><button>Edit</button></a></td>
-            <td><a href="/donations/<%= donation.id%>/delete"><button>Delete</button></a></td>
+            <td><a href="/donations/<%= donation.id %>/edit">Edit</a></td>
+            <td><a href="/donations/<%= donation.id%>/delete">Delete</a></td>
         </tr>
     <% end %> 
 
@@ -32,7 +32,7 @@
 <br>
 <br>
 
-<a href='/donations/new'><button>Add a new donation</button></a>
+<a href='/donations/new'>Add a new donation</a>
 <br>
 <br>
 <br>
@@ -47,13 +47,13 @@
 <tr> 
     <td> <%= charity.name %></td>
     <td> <%= charity.description %> 
-    <td> <a href= "/charities/<%= charity.id %>/edit"><button>Edit</button></a> </td> 
-    <td> <a href="/charities/<%= charity.id %>/delete"><button>Delete</button></a></td>
+    <td> <a href= "/charities/<%= charity.id %>/edit">Edit</a> </td> 
+    <td> <a href="/charities/<%= charity.id %>/delete">Delete</a></td>
 </tr> 
 <%end%>
 </table> 
 <br>
 <br>
-<a href="/charities/new"><button>Add a new charity</button></a>
+<a href="/charities/new">Add a new charity</a>
 <br>
 <br>

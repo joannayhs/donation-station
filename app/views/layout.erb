@@ -11,11 +11,13 @@
       <h1>Donation Station</h1>
       <h2>Keep track of all of your donations and charities in one place!</h2>
         <div class="menu">
-          <a href="/charities"><button type="button">View all charities</button></a><br>
+        <ul>
+         <li> <a href="/charities">View all charities</a></li>
           <%if logged_in?%>
-          <a href="/profile"><button type="button">View your profile</button></a><br>
-          <a href="/logout"><button>Logout</button></a><br>
+          <li><a href="/profile">View your profile</a></li>
+          <li><a href="/logout">Logout</a></li>
           <%end%>
+          </ul>
         </div>
         </div>
         <div class="body">
