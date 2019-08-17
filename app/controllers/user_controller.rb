@@ -40,12 +40,12 @@ class UserController < ApplicationController
         if params[:username] == "" || params[:password] == ""
             redirect to '/signup'
         else 
-            if params[:username] != User.find_by(username: params[:username]).username
-                @user = User.create(username: params[:username].downcase, password: params[:password]) 
+            if User.all.empty? || params[:username] != User.find_by(username: params[:username]).username
+                @user = User.create(username: params[:username].downcase, password: params[:password])
                 session[:user_id] = @user.id 
                 redirect to "/profile"
             else 
-                redirect to '/signup'
+                redirect to '/login'
             end 
         end 
     end 
