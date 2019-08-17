@@ -6,7 +6,7 @@ h1 {
     color: white;
 }
 
-table {
+table, td, th {
     border-collapse: collapse;
     text-align: center;
     border: 1px solid black;

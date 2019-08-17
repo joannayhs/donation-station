@@ -1,7 +1,7 @@
 class ApplicationController < Sinatra::Base 
     configure do 
         set 'public_folder', 'public'
-        set :views, Proc.new { File.join(root, "../views/") }
+        set :views, 'app/views' 
         enable :sessions
         set :session_secret, "donation_station"
         register Sinatra::Flash
@@ -9,6 +9,11 @@ class ApplicationController < Sinatra::Base
 
     get '/' do 
         erb :index
+    end 
+
+    not_found do 
+        status 404 
+        erb :error
     end 
 
     helpers do 
