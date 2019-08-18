@@ -1,0 +1,6 @@
+<div class="show">
+<h1><%= @charity.name %></h1><br><br>
+<%= @charity.description %><br><br>
+Added by <b><%= User.find_by_id(@charity.user_id).username%></b><br><br>
+<a href='/donations/new'>Donate</a>
+</div>

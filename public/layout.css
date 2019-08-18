@@ -86,3 +86,10 @@ a:link, a:visited {
 a:hover, a:active {
     background-color: white;
 }
+
+.show {
+    border: 1px solid black;
+    width: 50%;
+    text-align: center;
+    margin: 25px;
+}

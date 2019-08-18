@@ -13,6 +13,11 @@ class CharityController < ApplicationController
         end 
     end 
 
+    get '/charities/:id' do 
+        @charity = Charity.find_by_id(params[:id])
+        erb :'charity/show'
+    end 
+
     get '/charities/:id/edit' do 
         @charity = Charity.find_by_id(params[:id])
         if logged_in?

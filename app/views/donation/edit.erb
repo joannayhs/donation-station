@@ -1,8 +1,11 @@
+<%if Charity.find_by_id(@donation.charity_id)%>
 <h1>Edit Donation to <%= Charity.find_by_id(@donation.charity_id).name%></h1>
-
+<%else%>
+<h1>Edit Donation</h1>
+<%end%>
 <form method="post" action="/donations/<%= @donation.id %>">
     <input id="hidden" type="hidden" name="_method" value="patch">
-    <input type="currency" name="amount" value="<%= @donation.amount %>">
+    <input type="currency" name="amount" value="<%= sprintf("%.2f", @donation.amount) %>">
     <%@charities.each do |charity|%>
     <input type="radio" name="charity" value="<%=charity.name%>" <%= "checked" if @donation.charity_id == charity.id %>> <%= charity.name%></input>
     <%end%>

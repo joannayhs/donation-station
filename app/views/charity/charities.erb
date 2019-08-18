@@ -1,7 +1,7 @@
 <h1>Charities: </h1>
 <ul class="charities">
 <%@charities.each do |charity|%>
-<li><h3><u><%=charity.name%></u></h3><br>
+<li><h3><u><a href="charities/<%=charity.id%>"><%=charity.name%></a></u></h3><br>
 <%=charity.description%><br><br>
 Added by <b><%=User.find_by_id(charity.user_id).username %></b><br>
 <br><a href="/donations/new">Donate</a></li>
