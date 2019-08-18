@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Donation Station</title>
-    <link rel="stylesheet" type="text/css" href="layout.css">
+    <link rel="stylesheet" href="/layout.css">
   </head>
 
   <body>
@@ -16,12 +16,14 @@
           <%if logged_in?%>
           <li><a href="/profile">View your profile</a></li>
           <li><a href="/logout">Logout</a></li>
+          <%else%>
+          <li><a href="/login">Login</a></li>
           <%end%>
           </ul>
         </div>
         </div>
         <div class="body">
-        <%= yield %>
+        <%=yield%>
         </div>
   </body>
 </html>

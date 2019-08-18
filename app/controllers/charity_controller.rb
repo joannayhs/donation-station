@@ -13,6 +13,24 @@ class CharityController < ApplicationController
         end 
     end 
 
+    get '/charities/:id/edit' do 
+        @charity = Charity.find_by_id(params[:id])
+        if logged_in?
+            erb :'/charity/edit'
+        else
+            redirect to'/login'
+        end 
+    end 
+
+     get '/charities/:id/delete' do 
+        @charity = Charity.find_by_id(params[:id])
+        if logged_in? && @charity.user_id == current_user.id
+            erb :'/charity/delete'
+        else 
+            redirect to '/login'
+        end 
+    end 
+
     post '/charities' do 
         if logged_in? 
             if params[:name] != "" && params[:description] != "" 
@@ -29,15 +47,6 @@ class CharityController < ApplicationController
         end 
     end 
 
-    get '/charities/:id/edit' do 
-        @charity = Charity.find_by_id(params[:id])
-        if logged_in?
-            erb :'/charity/edit'
-        else
-            redirect to'/login'
-        end 
-    end 
-
     patch '/charities/:id' do 
         @charity = Charity.find_by_id(params[:id])
         if logged_in? && @charity.user_id == current_user.id
@@ -48,15 +57,6 @@ class CharityController < ApplicationController
             else 
                 redirect to '/charities/:id/edit'
             end 
-        else 
-            redirect to '/login'
-        end 
-    end 
-
-    get '/charities/:id/delete' do 
-        @charity = Charity.find_by_id(params[:id])
-        if logged_in? && @charity.user_id == current_user.id
-            erb :'/charity/delete'
         else 
             redirect to '/login'
         end 
