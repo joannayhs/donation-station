@@ -1,12 +1,9 @@
 class DonationController < ApplicationController 
 
     get '/donations/new' do 
-        if logged_in? 
-            @charities = Charity.all
-            erb :'/donation/new'
-        else 
-            redirect to '/login'
-        end 
+        authenticator 
+        @charities = Charity.all 
+        erb :'donation/new'
     end 
 
     post '/donations' do 
@@ -30,11 +27,9 @@ class DonationController < ApplicationController
     get '/donations/:id/edit' do 
         @donation = Donation.find_by_id(params[:id])
         @charities = Charity.all
-        if logged_in? && @donation.user_id == current_user.id
-            erb :'/donation/edit'
-        else 
-            redirect to '/login'
-        end 
+        authenticator 
+        authorize(@donation)
+        erb :'/donation/edit'
     end 
 
     patch '/donations/:id' do 

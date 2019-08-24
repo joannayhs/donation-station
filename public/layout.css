@@ -93,3 +93,7 @@ a:hover, a:active {
     text-align: center;
     margin: 25px;
 }
+
+.failed {
+    color: red;
+}

@@ -3,15 +3,13 @@ class UserController < ApplicationController
       get '/profile' do 
         @user = current_user
         @charities = @user.charities
-        if logged_in?
-            erb :'/user/profile'
-        else 
-            redirect to '/login'
-        end 
+        authenticator
+        erb :'/user/profile'
     end 
     
     get '/login' do 
      if !logged_in?
+        @failed = false
         erb :'/user/login'
      else 
         redirect to "/profile"
@@ -19,44 +17,37 @@ class UserController < ApplicationController
     end 
 
     post '/login' do 
-       @user = User.find_by(username: params[:username])
-       if @user && @user.authenticate(params[:password])
-        session[:user_id] = @user.id 
+       user = User.find_by(username: params[:username])
+       if user && user.authenticate(params[:password])
+        session[:user_id] = user.id 
         redirect to "/profile"
        else 
-        redirect to '/signup'
+        @failed = true 
+        erb :'user/login'
        end 
     end 
 
     get '/signup' do 
-     if logged_in?
-        redirect to "/profile"
-     else 
-        erb :'/user/signup'
-     end 
+        redirect to '/profile' if logged_in?
+        @user = nil
+        erb :'/user/signup' 
     end 
 
     post '/signup' do 
-        if params[:username] == "" || params[:password] == ""
-            redirect to '/signup'
+        user = User.create(params)
+        if user.errors.any? 
+            @errors = user.errors.full_messages
+            erb :'/user/signup'
         else 
-            if User.all.empty? || !User.find_by(username: params[:username])
-                @user = User.create(username: params[:username].downcase, password: params[:password])
-                session[:user_id] = @user.id 
-                redirect to "/profile"
-            else 
-                redirect to '/login'
-            end 
+            session[:user_id] = @user.id 
+            redirect to "/profile"
         end 
     end 
     
    get '/logout' do 
-        if logged_in?
-            session.destroy
-            redirect '/'
-        else 
-            redirect '/login'
-        end 
+        authenticator
+        session.destroy 
+        redirect '/'
     end 
 
     

@@ -6,11 +6,8 @@ class CharityController < ApplicationController
     end 
 
     get '/charities/new' do 
-        if logged_in? 
-            erb :'charity/new'
-        else 
-            redirect to '/login'
-        end 
+        authenticator 
+        erb :'/charity/new'
     end 
 
     get '/charities/:id' do 
@@ -19,21 +16,17 @@ class CharityController < ApplicationController
     end 
 
     get '/charities/:id/edit' do 
+        authenticator
         @charity = Charity.find_by_id(params[:id])
-        if logged_in?
-            erb :'/charity/edit'
-        else
-            redirect to'/login'
-        end 
+        authorize(@charity)
+        erb :'charity/edit'
     end 
 
      get '/charities/:id/delete' do 
         @charity = Charity.find_by_id(params[:id])
-        if logged_in? && @charity.user_id == current_user.id
-            erb :'/charity/delete'
-        else 
-            redirect to '/login'
-        end 
+        authenticator
+        authorize(@charity)
+        erb :'/charity/delete'
     end 
 
     post '/charities' do 

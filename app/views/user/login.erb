@@ -3,6 +3,10 @@
     <input type="text" name="username" placeholder="username">
     <input type="password" name="password" placeholder="password">
     <input type="submit" value="Log In">
+    <% if @failed %>
+    <p class="failed">Incorrect username and/or password.</p>
+    <% end %>
 </form>
+
 
 Or <a href='/signup'>Sign Up</a> if you don't already have an account.

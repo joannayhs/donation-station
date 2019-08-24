@@ -5,3 +5,9 @@
     <input type="password" name="password" placeholder="password">
     <input type="submit" value="Sign Up">
 </form>
+
+<%if @errors%>
+<% @errors.each do |e|%>
+<p class="failed"><%= e %></p>
+<%end%>
+<%end%>

@@ -1,4 +1,4 @@
 class Donation < ActiveRecord::Base 
-    belongs_to :users
-    belongs_to :charities
+    belongs_to :user
+    belongs_to :charity
 end 
