@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
     has_many :donations 
     has_many :charities
 
-    validates :username, presence: true, uniqueness: true, length: {is: 5}
-    validates :password, :presence => true
+    validates :username, presence: true, uniqueness: true, length: {minimum: 5}
+    validates :password, presence: true, length: {minimum: 6}
 end 

@@ -39,7 +39,7 @@ class UserController < ApplicationController
             @errors = user.errors.full_messages
             erb :'/user/signup'
         else 
-            session[:user_id] = @user.id 
+            session[:user_id] = user.id 
             redirect to "/profile"
         end 
     end 
